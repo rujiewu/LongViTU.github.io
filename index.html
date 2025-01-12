@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="LongViTU is a large-scale (~121k QA pairs, ~900h videos), automatically generated dataset for long-form video understanding.">
+  <meta name="keywords" content="vision language models, instruction-tuning, long-form video understanding">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LongViTU</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">LongViTU: Instruction Tuning for <br> Long-Form Video Understanding</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://rujiewu.github.io/">Rujie Wu</a><sup>1*</sup>,</span>
+            <span class="author-block">
+              <a href="https://jeasinema.github.io/">Xiaojian Ma</a><sup>2*†</sup>,</span>
+            <span class="author-block">
+              <a href="https://haici.cc/">Hai Ci</a><sup>3*</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://yuefan1014.github.io/">Yue Fan</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://patrick-tssn.github.io/">Yuxuan Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://haozhezhao.github.io/">Haozhe Zhao</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://liqing-ustc.github.io/">Qing Li</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://cfcs.pku.edu.cn/english/people/faculty/yizhouwang/index.htm">Yizhou Wang</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div>
+            <span class="author-block" style="display: block; margin-bottom: 5px;"><sup>1</sup>Peking University&emsp;&emsp;<sup>2</sup>BIGAI&emsp;&emsp;<sup>3</sup>National University of Singapore</span>
+            <span class="author-block" style="display: block; margin-bottom: 5px;"><sup>*</sup>Equal contribution&emsp;&emsp;<sup>†</sup>Research lead</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- arXiv Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2501.05037"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- Paper Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2501.05037"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/rujiewu/LongViTU"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/rujiewu/LongViTU"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <img src="static/images/teaser.png"/>
+        <div class="content has-text-justified">
+          <p style="text-align:justify; margin-top: 1.5em;">
+            This paper introduce <b>LongViTU</b>, a large-scale (~121k QA pairs, ~900h videos), automatically generated dataset for long-form video understanding. We developed a <i>systematic</i> approach that organizes videos into a <b><i>hierarchical tree</i></b> structure and incorporates <b><i>self-revision</i></b> mechanisms to ensure high-quality QA pairs. Each QA pair in LongViTU features: 1) long-term context (average <i>certificate length</i> of 4.6 minutes); 2) rich knowledge and condensed reasoning (commonsense, causality, planning, <i>etc.</i>); and 3) explicit timestamp labels for relevant events. LongViTU also serves as a benchmark for instruction following in long-form and streaming video understanding. We evaluate the open-source state-of-the-art long video understanding model, LongVU, and the commercial model, Gemini-1.5-Pro, on our benchmark. They achieve GPT-4 scores of 49.9 and 52.3, respectively, underscoring the substantial challenge posed by our benchmark. Further supervised fine-tuning (SFT) on LongVU led to performance improvements of 12.0% on our benchmark, 2.2% on the in-distribution (ID) benchmark EgoSchema, 1.0%, 2.2% and 1.2% on the out-of-distribution (OOD) benchmarks VideoMME (Long), WorldQA and OpenEQA, respectively. These outcomes demonstrate LongViTU's high data quality and robust OOD generalizability.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Approaches. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Pipeline</h2>
+        <img src="static/images/pipeline.png"/>
+        <div class="content has-text-justified">
+          <p style="text-align:justify; margin-bottom: 1.5em; margin-top: 1.5em;">
+            We adopt a <b><i>hierarchical</i></b> pipeline that organizes video content into a tree structure, with subtrees encapsulating information at different temporal scales. This framework facilitates the generation of QA pairs with <i>explicit timestamps</i>, ensuring adaptability to varying <i>contextual lengths</i>. By summarizing content across multiple temporal levels (<i>frame level, event level, segment level</i>), our approach overcomes the challenge of excessively long input length for LLMs from long-form video. This enables LLMs to generate distinct types of questions, resulting in a <i>fine-grained categorization</i> aligned with the video content. To further enhance quality, a <b><i>self-revision</i></b> step refines results by removing redundancy and irrelevant prior information. For more details, please refer to our <a href="https://arxiv.org/pdf/2501.05037">Paper</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Qualitative Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative</h2>
+        <section class="hero is-light is-small">
+          <div class="hero-body">
+            <div class="container">
+              <div id="results-carousel" class="carousel results-carousel">
+                <div class="item item-steve">
+                  <img src="./static/images/qualitative_1.png">
+                </div>
+                <div class="item item-chair-tp">
+                  <img src="./static/images/qualitative_2.png">
+                </div>
+                <div class="item item-shiba">
+                  <img src="./static/images/qualitative_3.png">
+                </div>
+                <div class="item item-fullbody">
+                  <img src="./static/images/qualitative_2.png">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="content has-text-justified">
+          <p style="text-align:justify; margin-bottom: 1.5em; margin-top: 1.5em;">
+            We present visualizations of various question-answering types to facilitate a more thorough qualitative analysis. The yellow box indicates the key frame that contains the answer, while the red box highlights the relevant objects. For better illustration, only concise key information is presented in the predictions. For a clearer view, please refer to our <a href="https://arxiv.org/pdf/2501.05037">Paper</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns is-centered has-text-centered">
+    <div class="column is-four-fifths">
+      <h2 class="title is-3">Statistics</h2>
+      <section class="hero is-light is-small">
+        <div class="hero-body">
+          <div class="container">
+            <div class="columns is-vcentered">
+              <div class="column">
+                <img src="./static/images/duration.png" style="height: 300px; width: auto;">
+              </div>
+              <div class="column">
+                <img src="./static/images/sunburst.png" style="height: 300px; width: auto;">
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="content has-text-justified">
+        <p style="text-align:justify; margin-bottom: 1.5em; margin-top: 1.5em;">
+          Here are distributions and sunburst of LongViTU, if you want to view our complete dataset, please refer to our <a href="https://huggingface.co/datasets/rujiewu/LongViTU">Dataset</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+    
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{wu2025longvituinstructiontuninglongform,
+      title={LongViTU: Instruction Tuning for Long-Form Video Understanding}, 
+      author={Rujie Wu and Xiaojian Ma and Hai Ci and Yue Fan and Yuxuan Wang and Haozhe Zhao and Qing Li and Yizhou Wang},
+      year={2025},
+      eprint={2501.05037},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2501.05037}, 
+}
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2501.05037">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/rujiewu/LongViTU" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website was adopted from <a href="https://nerfies.github.io/">Nerfies</a>. Send feedback and questions to <a href="https://rujiewu.github.io/">Rujie Wu</a> and <a href="https://jeasinema.github.io/">Xiaojian Ma</a>.
+          </p>
+          <!-- <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
