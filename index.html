@@ -52,9 +52,9 @@
             <span class="author-block">
               <a href="https://rujiewu.github.io/">Rujie Wu</a><sup>1*</sup>,</span>
             <span class="author-block">
-              <a href="https://jeasinema.github.io/">Xiaojian Ma</a><sup>2*†</sup>,</span>
+              <a href="https://jeasinema.github.io/">Xiaojian Ma</a><sup>2†</sup>,</span>
             <span class="author-block">
-              <a href="https://haici.cc/">Hai Ci</a><sup>3*</sup>,
+              <a href="https://haici.cc/">Hai Ci</a><sup>3</sup>,
             </span>
             <span class="author-block">
               <a href="https://yuefan1014.github.io/">Yue Fan</a><sup>2</sup>,
@@ -75,7 +75,7 @@
 
           <div>
             <span class="author-block" style="display: block; margin-bottom: 5px;"><sup>1</sup>Peking University&emsp;&emsp;<sup>2</sup>BIGAI&emsp;&emsp;<sup>3</sup>National University of Singapore</span>
-            <span class="author-block" style="display: block; margin-bottom: 5px;"><sup>*</sup>Equal contribution&emsp;&emsp;<sup>†</sup>Research lead</span>
+            <span class="author-block" style="display: block; margin-bottom: 5px;"><sup>†</sup>Research lead</span>
           </div>
 
           <div class="column has-text-centered">
@@ -140,7 +140,7 @@
         <img src="static/images/teaser.png"/>
         <div class="content has-text-justified">
           <p style="text-align:justify; margin-top: 1.5em;">
-            This paper introduce <b>LongViTU</b>, a large-scale (~121k QA pairs, ~900h videos), automatically generated dataset for long-form video understanding. We developed a <i>systematic</i> approach that organizes videos into a <b><i>hierarchical tree</i></b> structure and incorporates <b><i>self-revision</i></b> mechanisms to ensure high-quality QA pairs. Each QA pair in LongViTU features: 1) long-term context (average <i>certificate length</i> of 4.6 minutes); 2) rich knowledge and condensed reasoning (commonsense, causality, planning, <i>etc.</i>); and 3) explicit timestamp labels for relevant events. LongViTU also serves as a benchmark for instruction following in long-form and streaming video understanding. We evaluate the open-source state-of-the-art long video understanding model, LongVU, and the commercial model, Gemini-1.5-Pro, on our benchmark. They achieve GPT-4 scores of 49.9 and 52.3, respectively, underscoring the substantial challenge posed by our benchmark. Further supervised fine-tuning (SFT) on LongVU led to performance improvements of 12.0% on our benchmark, 2.2% on the in-distribution (ID) benchmark EgoSchema, 1.0%, 2.2% and 1.2% on the out-of-distribution (OOD) benchmarks VideoMME (Long), WorldQA and OpenEQA, respectively. These outcomes demonstrate LongViTU's high data quality and robust OOD generalizability.
+            This paper introduces <b>LongViTU</b>, a large-scale (~121k QA pairs, ~900h videos), automatically generated dataset for long-form video understanding. We propose a <i>systematic</i> approach that organizes videos into a <b><i>hierarchical tree</i></b> structure for QA generation and incorporates <b><i>self-revision</i></b> mechanisms to ensure high-quality QA pairs. Each QA pair in LongViTU features: 1) long-term context (average <i>certificate length</i> of 4.6 minutes); 2) rich knowledge and condensed reasoning (commonsense, causality, planning, <i>etc.</i>)). We also offer explicit timestamp annotations of relevant events for each QA pair. We have conducted extensive human studies on LongViTU, and the results prove the quality of our dataset. To better evaluate the challenges posed by LongViTU’s emphasis on long-term context and condensed reasoning, we manually curate a subset of LongViTU into a benchmark. Evaluations using a state-of-the-art open-source model (LongVU), a proprietary model (Gemini-1.5-Pro), and human annotators yield GPT-4 scores of 49.9, 52.3, and 81.0, respectively, underscoring the substantial difficulty presented by LongViTU questions. Performing supervised fine-tuning (SFT) of LongVU and LLaVA-Video on LongViTU data results in average performance gains of 2.5% and 3.7%, respectively, across a suite of long video understanding benchmarks (EgoSchema, VideoMME-Long, MLVU, LVBench).
           </p>
         </div>
       </div>
@@ -153,7 +153,7 @@
         <img src="static/images/pipeline.png"/>
         <div class="content has-text-justified">
           <p style="text-align:justify; margin-bottom: 1.5em; margin-top: 1.5em;">
-            We adopt a <b><i>hierarchical</i></b> pipeline that organizes video content into a tree structure, with subtrees encapsulating information at different temporal scales. This framework facilitates the generation of QA pairs with <i>explicit timestamps</i>, ensuring adaptability to varying <i>contextual lengths</i>. By summarizing content across multiple temporal levels (<i>frame level, event level, segment level</i>), our approach overcomes the challenge of excessively long input length for LLMs from long-form video. This enables LLMs to generate distinct types of questions, resulting in a <i>fine-grained categorization</i> aligned with the video content. To further enhance quality, a <b><i>self-revision</i></b> step refines results by removing redundancy and irrelevant prior information. For more details, please refer to our <a href="https://arxiv.org/pdf/2501.05037">Paper</a>.
+            We design an automatic pipeline to generate QA pairs from Ego4D videos while addressing the challenge of long-form video comprehension. To mitigate the context length limitation of LLMs and grasp spatial-temporal information in long video context, we employ a <b><i>hierarchical</i></b> tree structure. This structure first condenses dense captions to refine event descriptions and then segments content into sequential events with finer temporal granularity. Such representations facilitate the generation of QA pairs with <i>explicit timestamps</i> and varying <i>contextual lengths</i>, ensuring adaptability across different temporal levels (<i>frame level, event level, segment level</i>). Additionally, we design prompting strategies to generate high-quality questions that require condensed reasoning. Finally, a <b><i>self-revision</i></b> step refines results by removing redundancy and irrelevant prior information. For more details, please refer to our <a href="https://arxiv.org/pdf/2501.05037">Paper</a>.
           </p>
         </div>
       </div>
